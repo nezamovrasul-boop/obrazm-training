@@ -149,3 +149,32 @@ html,body{overflow-x:hidden}.hero img,.photo-strip img,.speaker-image,.freedom-p
 
 /* Mobile screenshot fixes */
 @media(max-width:800px){.booking-copy h2{font-size:clamp(38px,12.5vw,62px)!important;line-height:.95!important;letter-spacing:-.03em!important;overflow-wrap:normal!important}.place h2{font-size:clamp(34px,9vw,52px)!important;line-height:1.02!important;letter-spacing:-.025em!important}.final h2{font-size:clamp(36px,10vw,58px)!important;line-height:1.02!important;letter-spacing:-.025em!important}.booking-note>p{font-size:16px;line-height:1.35}.contact-number{padding:18px 20px}.contact-number span{font-size:20px;white-space:nowrap}.hero .eyebrow{font-size:clamp(23px,7vw,35px)!important}.hero h1{font-size:clamp(23px,6vw,32px)!important}}
+
+/* Responsive content sizing: allow grid children and words to fit. */
+.hero-title-main,.hero-title-sub{white-space:normal!important}
+@media(max-width:800px){
+.page-width,.photo-strip-inner{width:calc(100% - 40px);max-width:100%;min-width:0}
+main section *{min-width:0}
+.hero .eyebrow{white-space:normal!important;font-size:clamp(28px,7.5vw,44px)!important;line-height:1.12!important;letter-spacing:-.02em!important;word-spacing:normal!important;max-width:100%}
+.hero-title-main,.hero-title-sub{display:inline!important;margin:0!important;white-space:normal!important}
+.hero h1{font-size:clamp(20px,4vw,24px)!important;line-height:1.2!important;white-space:normal!important;word-spacing:normal!important;letter-spacing:normal!important}
+.hero{height:auto;min-height:100svh}
+.hero-content{height:auto;min-height:100svh;padding-top:125px;padding-bottom:160px}
+.hero-bottom{bottom:36px}
+h2,.place h2,.booking-copy h2,.final h2{font-size:clamp(26px,7vw,40px)!important;line-height:1.15!important;letter-spacing:-.02em!important;white-space:normal!important;overflow-wrap:anywhere!important}
+.booking-copy,.intro-grid,.freedom,.speaker,.amenities{grid-template-columns:minmax(0,1fr)!important}
+.booking-copy{gap:28px}
+.contact-number{width:100%;max-width:100%;box-sizing:border-box}
+.contact-number span{font-size:clamp(18px,5vw,24px);white-space:normal}
+.place{height:auto;min-height:650px}
+.place-content{padding-block:70px}
+.audience-list article{grid-template-columns:28px minmax(0,1fr);gap:12px}
+summary{grid-template-columns:60px minmax(0,1fr) 24px}
+details>p{margin:0 0 24px}
+.book-modal-panel{max-height:85svh;overflow-y:auto}
+.section-label{max-width:100%;white-space:normal}
+.nav.is-open{top:100%;max-height:75svh;overflow:auto}
+.menu-button{min-width:44px;min-height:44px}
+.footer-note{white-space:normal;line-height:1.6}
+}
+@media(max-width:380px){.pain-grid{grid-template-columns:minmax(0,1fr)}}
