@@ -100,3 +100,7 @@ body.modal-open{overflow:hidden}.price-note{margin:28px 0 0;font:500 16px/1.45 v
 
 /* Softer header green */
 .header{background:#3d685f}.nav.is-open{background:#3d685f}.contact-number{background:#3d685f}.header .button{color:#3d685f}
+
+/* Restore hero question typography */
+.hero h1{font-family:var(--sans);font-size:clamp(42px,6.2vw,76px);font-weight:900;letter-spacing:-.075em;word-spacing:-.12em;line-height:.96;text-transform:uppercase;opacity:1}
+@media(max-width:800px){.hero h1{font-size:clamp(36px,10vw,58px);letter-spacing:-.065em;word-spacing:-.1em;line-height:.98}}
