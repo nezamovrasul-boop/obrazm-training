@@ -119,3 +119,7 @@ html,body,button,input,textarea,select{font-family:var(--sans)}
 
 .hero .eyebrow{display:flex;flex-direction:column;gap:2px;letter-spacing:-.04em;word-spacing:normal;line-height:.98}.hero-title-main{font-size:1em;font-weight:900}.hero-title-sub{font-size:.72em;font-weight:700;opacity:.9;letter-spacing:-.03em}
 @media(max-width:800px){.hero .eyebrow{gap:3px;line-height:1.02}.hero-title-sub{font-size:.76em}}
+
+/* Final spacing correction after visual review */
+.hero .eyebrow{display:block;letter-spacing:-.035em!important;word-spacing:normal!important;line-height:1.02}.hero-title-main,.hero-title-sub{display:block;white-space:nowrap}.hero-title-sub{margin-top:4px;letter-spacing:-.025em!important}.hero h1{letter-spacing:-.035em!important;word-spacing:normal!important}
+@media(max-width:800px){.hero .eyebrow{letter-spacing:-.025em!important}.hero-title-sub{margin-top:3px}.hero h1{letter-spacing:-.025em!important}}
