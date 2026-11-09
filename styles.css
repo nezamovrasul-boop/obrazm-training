@@ -204,7 +204,7 @@ details>p{margin:0 0 24px}
 }
 
 /* Reduce primary headline by 18%. */
-.hero .eyebrow{font-size:clamp(48.2836992px,6.7898952vw,93.5496672px)!important}
+.hero .eyebrow{font-size:clamp(41.04114432px,5.77141092vw,79.51721712px)!important}
 @media(max-width:800px){
-.hero .eyebrow{font-size:clamp(42.2482368px,11.316492vw,66.3900864px)!important}
+.hero .eyebrow{font-size:clamp(35.91000128px,9.6190182vw,56.43157344px)!important}
 }
