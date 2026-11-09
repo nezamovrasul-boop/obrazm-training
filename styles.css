@@ -127,3 +127,8 @@ html,body,button,input,textarea,select{font-family:var(--sans)}
 /* Readable word spacing */
 .hero .eyebrow,.hero h1{letter-spacing:-.018em!important;word-spacing:.08em!important}
 @media(max-width:800px){.hero .eyebrow,.hero h1{letter-spacing:-.012em!important;word-spacing:.05em!important}}
+
+/* Standard spacing matching content headings */
+.hero .eyebrow,.hero h1{letter-spacing:normal!important;word-spacing:normal!important}
+.hero-title-main,.hero-title-sub{letter-spacing:normal!important}
+@media(max-width:800px){.hero .eyebrow,.hero h1{letter-spacing:normal!important;word-spacing:normal!important}}
