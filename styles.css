@@ -108,3 +108,6 @@ body.modal-open{overflow:hidden}.price-note{margin:28px 0 0;font:500 16px/1.45 v
 /* Match primary hero title typography */
 .hero .eyebrow{font-family:var(--sans);font-weight:900;letter-spacing:-.075em;word-spacing:-.12em}
 @media(max-width:800px){.hero .eyebrow{letter-spacing:-.06em;word-spacing:-.1em}}
+
+.hero .eyebrow{word-spacing:-.28em;letter-spacing:-.09em}
+@media(max-width:800px){.hero .eyebrow{word-spacing:-.2em;letter-spacing:-.07em}}
