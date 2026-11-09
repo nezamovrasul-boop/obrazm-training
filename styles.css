@@ -97,3 +97,6 @@ body.modal-open{overflow:hidden}.price-note{margin:28px 0 0;font:500 16px/1.45 v
 .role-orbit span:nth-child(1){left:50%!important;top:8px!important;transform:translateX(-50%)!important;animation-delay:-1.2s!important}.role-orbit span:nth-child(2){right:5px!important;top:50%!important;transform:translateY(-50%)!important;animation-delay:-2.8s!important}.role-orbit span:nth-child(4){left:3px!important;top:50%!important;transform:translateY(-50%)!important;animation-delay:-4.1s!important}
 @keyframes word-float{0%,100%{opacity:.48;letter-spacing:.12em}50%{opacity:1;letter-spacing:.2em}}@keyframes word-pulse{0%,100%{opacity:.65;transform:translate(-50%,-50%) scale(.92)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.12)}}
 @media(max-width:800px){.role-orbit{position:relative;right:auto;top:auto;width:240px;height:200px;margin:20px auto}.role-orbit b{font-size:34px!important}}
+
+/* Softer header green */
+.header{background:#3d685f}.nav.is-open{background:#3d685f}.contact-number{background:#3d685f}.header .button{color:#3d685f}
