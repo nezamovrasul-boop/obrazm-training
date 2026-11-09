@@ -54,3 +54,15 @@ body.modal-open{overflow:hidden}.price-note{margin:28px 0 0;font:500 16px/1.45 v
 .header .button{font:700 10px/1.4 var(--sans);white-space:nowrap}.header-phone,.nav a{white-space:nowrap}
 @media(min-width:801px) and (max-width:1100px){.header{gap:18px;padding-inline:28px}.header .brand img{width:150px}.nav{gap:18px}.header-phone{display:none}}
 
+
+/* Client revisions */
+.header{background:#214b46;color:#f7f7f5;border-bottom-color:rgba(255,255,255,.22)}
+.header .nav a,.header .header-phone{color:#f7f7f5}
+.header .menu-button{color:#f7f7f5}
+.nav.is-open{background:#214b46}
+.nav.is-open a{color:#f7f7f5!important}
+.header .button{background:#f7f7f5;color:#214b46;border-color:#f7f7f5}
+.contact-prices{background:#e6e6e3}
+.contact-prices .price-title{display:flex;align-items:end;justify-content:space-between;margin-bottom:28px}
+.contact-number{display:inline-block;color:#f7f7f5;background:#214b46;padding:20px 28px;border-radius:3px;font:700 22px ui-monospace,monospace;letter-spacing:.03em}
+@media(max-width:800px){.contact-prices .price-title{display:block}.contact-number{font-size:18px;padding:17px 20px}.header .button{display:none}}
