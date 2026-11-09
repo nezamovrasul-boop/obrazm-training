@@ -88,3 +88,12 @@ body.modal-open{overflow:hidden}.price-note{margin:28px 0 0;font:500 16px/1.45 v
 @media(max-width:800px){.hero .eyebrow{font-size:clamp(24px,7.4vw,34px);line-height:1.04;letter-spacing:-.035em;margin-bottom:18px}.hero h1{font-size:clamp(24px,6.7vw,34px);line-height:1.06}.hero-lead{font-size:14px}}
 
 .footer-note{font:700 15px/1.4 var(--sans);color:var(--ink)}.footer-note a{color:var(--ink);text-decoration:underline;text-underline-offset:4px}@media(max-width:800px){.footer-note{font-size:13px}}
+
+/* Word-only role constellation */
+.role-orbit{border:0!important;border-radius:0;width:300px;height:260px;animation:none!important;display:block;transform:none!important}
+.role-orbit:before,.role-orbit:after{display:none!important}
+.role-orbit span,.role-orbit b{position:absolute!important;width:auto!important;height:auto!important;background:none!important;border:0!important;border-radius:0!important;color:var(--forest)!important;display:block!important;font-family:ui-monospace,monospace!important;font-weight:800!important;letter-spacing:.12em!important;text-transform:uppercase!important;animation:word-float 6s ease-in-out infinite!important;transform:none!important}
+.role-orbit b{left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;color:var(--ink)!important;font-size:44px!important;letter-spacing:.02em!important;animation:word-pulse 4s ease-in-out infinite!important}
+.role-orbit span:nth-child(1){left:50%!important;top:8px!important;transform:translateX(-50%)!important;animation-delay:-1.2s!important}.role-orbit span:nth-child(2){right:5px!important;top:50%!important;transform:translateY(-50%)!important;animation-delay:-2.8s!important}.role-orbit span:nth-child(4){left:3px!important;top:50%!important;transform:translateY(-50%)!important;animation-delay:-4.1s!important}
+@keyframes word-float{0%,100%{opacity:.48;letter-spacing:.12em}50%{opacity:1;letter-spacing:.2em}}@keyframes word-pulse{0%,100%{opacity:.65;transform:translate(-50%,-50%) scale(.92)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.12)}}
+@media(max-width:800px){.role-orbit{position:relative;right:auto;top:auto;width:240px;height:200px;margin:20px auto}.role-orbit b{font-size:34px!important}}
