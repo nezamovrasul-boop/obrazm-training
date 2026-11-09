@@ -78,3 +78,7 @@ body.modal-open{overflow:hidden}.price-note{margin:28px 0 0;font:500 16px/1.45 v
 
 .speaker .section-label{color:#fff!important;background:#2a2a28!important;opacity:1}
 .freedom .section-label{color:#fff!important;background:#2a2a28!important;opacity:1}
+
+/* Consistent label contrast */
+.section-label{background:#2a2a28!important;color:#fff!important}
+.situations .section-label,.program .section-label,.final .section-label{background:#f4f4f1!important;color:#1c1c1b!important}
