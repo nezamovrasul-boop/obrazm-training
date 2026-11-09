@@ -202,3 +202,9 @@ details>p{margin:0 0 24px}
 .hero .eyebrow{font-size:clamp(73.92px,19.8vw,116.16px)!important}
 .hero h1{font-size:clamp(12.8px,2.56vw,15.36px)!important}
 }
+
+/* Reduce primary headline by 18%. */
+.hero .eyebrow{font-size:clamp(69.2736px,9.7416vw,134.2176px)!important}
+@media(max-width:800px){
+.hero .eyebrow{font-size:clamp(60.6144px,16.236vw,95.2512px)!important}
+}
