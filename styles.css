@@ -111,3 +111,8 @@ body.modal-open{overflow:hidden}.price-note{margin:28px 0 0;font:500 16px/1.45 v
 
 .hero .eyebrow{word-spacing:-.28em;letter-spacing:-.09em}
 @media(max-width:800px){.hero .eyebrow{word-spacing:-.2em;letter-spacing:-.07em}}
+
+/* Apple-like typography */
+:root{--sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Arial,sans-serif;--serif:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Arial,sans-serif}
+html,body,button,input,textarea,select{font-family:var(--sans)}
+.hero h1,.hero .eyebrow,h1,h2,h3,.button,.nav a,.header-phone,.section-label,.contact-number,.footer-note{font-family:var(--sans)}
