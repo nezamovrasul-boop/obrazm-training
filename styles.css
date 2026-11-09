@@ -123,3 +123,7 @@ html,body,button,input,textarea,select{font-family:var(--sans)}
 /* Final spacing correction after visual review */
 .hero .eyebrow{display:block;letter-spacing:-.035em!important;word-spacing:normal!important;line-height:1.02}.hero-title-main,.hero-title-sub{display:block;white-space:nowrap}.hero-title-sub{margin-top:4px;letter-spacing:-.025em!important}.hero h1{letter-spacing:-.035em!important;word-spacing:normal!important}
 @media(max-width:800px){.hero .eyebrow{letter-spacing:-.025em!important}.hero-title-sub{margin-top:3px}.hero h1{letter-spacing:-.025em!important}}
+
+/* Readable word spacing */
+.hero .eyebrow,.hero h1{letter-spacing:-.018em!important;word-spacing:.08em!important}
+@media(max-width:800px){.hero .eyebrow,.hero h1{letter-spacing:-.012em!important;word-spacing:.05em!important}}
