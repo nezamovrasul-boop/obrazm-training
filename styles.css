@@ -143,3 +143,6 @@ html,body,button,input,textarea,select{font-family:var(--sans)}
 
 /* Mobile hero fit */
 @media(max-width:800px){.hero .eyebrow{white-space:normal!important;max-width:100%!important;font-size:clamp(23px,7vw,34px)!important;line-height:1.05!important}.hero-title-main,.hero-title-sub{white-space:normal!important;display:inline!important}.hero-title-sub{margin-left:.12em!important}.hero h1{font-size:clamp(21px,6vw,31px)!important;line-height:1.08!important}}
+
+/* Mobile safety pass */
+html,body{overflow-x:hidden}.hero img,.photo-strip img,.speaker-image,.freedom-photo,.place-image{max-width:100%} @media(max-width:800px){.page-width{width:calc(100% - 32px);max-width:none}.hero-content{padding-top:128px}.hero .eyebrow{max-width:100%;overflow-wrap:anywhere}.hero-title-main,.hero-title-sub{white-space:normal!important}.hero h1{max-width:100%;overflow-wrap:anywhere}.hero-lead{max-width:290px}.section-heading h2,.program-head h2,.speaker-copy h2,.place h2,.booking-copy h2,.final h2{overflow-wrap:anywhere}.photo-strip-inner{width:calc(100% - 32px)}.photo-strip figure,.photo-strip figure:nth-child(even){max-width:82vw}.contact-number{max-width:100%;overflow-wrap:anywhere}.contact-number span{font-size:clamp(17px,5vw,24px)}.footer-note{max-width:100%;overflow-wrap:anywhere}.summary,summary{max-width:100%}}
