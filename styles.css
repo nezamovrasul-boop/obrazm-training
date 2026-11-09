@@ -194,3 +194,11 @@ details>p{margin:0 0 24px}
 .hero .eyebrow{font-size:clamp(61.6px,16.5vw,96.8px)!important}
 .hero h1{font-size:clamp(16px,3.2vw,19.2px)!important}
 }
+
+/* Increase primary title 20%, reduce secondary question 20%. */
+.hero .eyebrow{font-size:clamp(84.48px,11.88vw,163.68px)!important}
+.hero h1{font-size:clamp(14.08px,1.92vw,24.32px)!important}
+@media(max-width:800px){
+.hero .eyebrow{font-size:clamp(73.92px,19.8vw,116.16px)!important}
+.hero h1{font-size:clamp(12.8px,2.56vw,15.36px)!important}
+}
