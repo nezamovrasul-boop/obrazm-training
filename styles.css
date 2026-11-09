@@ -86,3 +86,5 @@ body.modal-open{overflow:hidden}.price-note{margin:28px 0 0;font:500 16px/1.45 v
 /* Final hero hierarchy */
 .hero .eyebrow{font-size:clamp(30px,4vw,54px);line-height:1;letter-spacing:-.045em;font-weight:900;max-width:1120px;margin-bottom:22px}.hero h1{font-size:clamp(25px,3.1vw,42px);line-height:1.04;letter-spacing:-.04em;opacity:.9}.hero-lead{font-size:clamp(14px,1.2vw,17px)}
 @media(max-width:800px){.hero .eyebrow{font-size:clamp(24px,7.4vw,34px);line-height:1.04;letter-spacing:-.035em;margin-bottom:18px}.hero h1{font-size:clamp(24px,6.7vw,34px);line-height:1.06}.hero-lead{font-size:14px}}
+
+.footer-note{font:700 15px/1.4 var(--sans);color:var(--ink)}.footer-note a{color:var(--ink);text-decoration:underline;text-underline-offset:4px}@media(max-width:800px){.footer-note{font-size:13px}}
