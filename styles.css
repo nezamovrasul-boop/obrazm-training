@@ -186,3 +186,11 @@ details>p{margin:0 0 24px}
 @media(max-width:800px){
 .hero .eyebrow{font-size:clamp(56px,15vw,88px)!important;white-space:normal!important;line-height:1.08!important;overflow-wrap:anywhere!important}
 }
+
+/* Refine relative hero title sizes. */
+.hero .eyebrow{font-size:clamp(70.4px,9.9vw,136.4px)!important}
+.hero h1{font-size:clamp(17.6px,2.4vw,30.4px)!important;line-height:1.25!important}
+@media(max-width:800px){
+.hero .eyebrow{font-size:clamp(61.6px,16.5vw,96.8px)!important}
+.hero h1{font-size:clamp(16px,3.2vw,19.2px)!important}
+}
