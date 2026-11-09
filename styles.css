@@ -178,3 +178,11 @@ details>p{margin:0 0 24px}
 .footer-note{white-space:normal;line-height:1.6}
 }
 @media(max-width:380px){.pain-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* Double the primary headline, preserving wrapping. */
+.hero .eyebrow{font-size:clamp(64px,9vw,124px)!important;white-space:normal!important;line-height:1.08!important;overflow-wrap:anywhere;max-width:100%;word-spacing:normal!important}
+.hero{height:auto;min-height:100svh}
+.hero-content{height:auto;min-height:100svh;padding-bottom:160px}
+@media(max-width:800px){
+.hero .eyebrow{font-size:clamp(56px,15vw,88px)!important;white-space:normal!important;line-height:1.08!important;overflow-wrap:anywhere!important}
+}
