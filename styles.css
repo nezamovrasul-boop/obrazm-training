@@ -77,3 +77,4 @@ body.modal-open{overflow:hidden}.price-note{margin:28px 0 0;font:500 16px/1.45 v
 @media(max-width:800px){.hero .eyebrow{font-size:clamp(20px,6.2vw,29px);line-height:1.08;letter-spacing:-.02em;margin-bottom:20px}.hero h1{font-size:clamp(31px,8.5vw,46px)}.hero-lead{font-size:15px}}
 
 .speaker .section-label{color:#fff!important;background:#2a2a28!important;opacity:1}
+.freedom .section-label{color:#fff!important;background:#2a2a28!important;opacity:1}
