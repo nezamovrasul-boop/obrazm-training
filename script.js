@@ -34,18 +34,30 @@ const photoSlides=[
 let photoIndex=0,photoLoading=false;
 const photo=document.querySelector('#hero-photo'),photoStatus=document.querySelector('#gallery-status');
 const photoButtons=[document.querySelector('#gallery-prev'),document.querySelector('#gallery-next')];
-function changePhoto(direction){
+
+const reducedHeroMotion=matchMedia('(prefers-reduced-motion:reduce)');
+async function changePhoto(direction){
  if(photoLoading)return;
  const next=(photoIndex+direction+photoSlides.length)%photoSlides.length;
  const slide=photoSlides[next],preload=new Image();photoLoading=true;
  photoButtons.forEach(b=>b.disabled=true);
  const finish=()=>{photoLoading=false;photoButtons.forEach(b=>b.disabled=false)};
- preload.onload=()=>{
+ preload.onerror=()=>{photoStatus.textContent='Фото временно недоступно. Попробуйте ещё раз.';finish()};
+ preload.onload=async()=>{
+ let outgoing;
+ try{
+ if(!reducedHeroMotion.matches&&photo.animate){
+ outgoing=photo.cloneNode(false);outgoing.removeAttribute('id');outgoing.alt='';outgoing.setAttribute('aria-hidden','true');outgoing.className='photo-outgoing';photo.parentElement.append(outgoing);
+ }
  photoIndex=next;photo.src=slide.src;photo.alt=slide.alt;
  photoStatus.textContent=String(next+1).padStart(2,'0')+' / 03 · '+slide.label;
- photo.classList.remove('photo-enter');void photo.offsetWidth;photo.classList.add('photo-enter');finish();
+ if(outgoing){
+ const distance=innerWidth<761?40:75;
+ await outgoing.animate([{transform:'translateX(0) rotate(0deg)',opacity:1},{transform:'translateX('+(-direction*distance)+'px) rotate('+(-direction*7)+'deg)',opacity:0}],{duration:380,easing:'cubic-bezier(.22,.75,.25,1)'}).finished;
+ }
+ }catch(error){/* Finish safely if animation is interrupted. */}
+ finally{outgoing?.remove();finish()}
  };
- preload.onerror=()=>{photoStatus.textContent='Фото временно недоступно';finish()};
  preload.src=slide.src;
 }
 photoButtons[0].addEventListener('click',()=>changePhoto(-1));
@@ -58,3 +70,10 @@ let pendingFrame=false;
 function updateGallery(){pendingFrame=false;if(!galleryEl)return;const r=galleryEl.getBoundingClientRect();const p=Math.max(0,Math.min(1,(innerHeight-r.top)/(innerHeight+r.height)));galleryEl.style.setProperty('--angle',motionAllowed.matches?Math.max(0,12*(1-p*2))+'deg':'0deg');galleryEl.style.setProperty('--shift',motionAllowed.matches?12*(1-p*2)+'px':'0px')}
 function requestGallery(){if(!pendingFrame){pendingFrame=true;requestAnimationFrame(updateGallery)}}
 addEventListener('scroll',requestGallery,{passive:true});addEventListener('resize',requestGallery);motionAllowed.addEventListener('change',requestGallery);updateGallery();
+
+let swipeStart;
+const heroFrame=document.querySelector('.gallery-frame');
+heroFrame.addEventListener('pointerdown',e=>{if(e.isPrimary&&e.pointerType!=='mouse')swipeStart={x:e.clientX,y:e.clientY}});
+heroFrame.addEventListener('pointerup',e=>{if(!swipeStart)return;const dx=e.clientX-swipeStart.x,dy=e.clientY-swipeStart.y;swipeStart=null;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.5)changePhoto(dx<0?1:-1)});
+heroFrame.addEventListener('pointercancel',()=>{swipeStart=null});
+reducedHeroMotion.addEventListener('change',()=>{if(reducedHeroMotion.matches)heroFrame.getAnimations({subtree:true}).forEach(a=>a.finish())});
