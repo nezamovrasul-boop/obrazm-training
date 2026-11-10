@@ -26,43 +26,6 @@ let step=0;const answers=[];const qs=document.querySelector('#q-step'),qt=docume
 function renderQuiz(){qb.hidden=step===0;qr.hidden=true;qo.hidden=false;if(step===3){qs.textContent='ВАШ ПЕРВЫЙ ХОД';qt.textContent='Сценарий начинается с привычной реакции.';qo.hidden=true;qr.hidden=false;qr.replaceChildren();const p=document.createElement('p');p.textContent='Вы заметили знакомую историю '+['в близких отношениях','в работе и ответственности','в отношении к себе'][answers[0]]+'. Ваша привычная реакция: «'+questions[1].options[answers[1]]+'».';const p2=document.createElement('p');p2.textContent='Ваш желаемый шаг: «'+questions[2].options[answers[2]]+'». Вспомните один недавний эпизод и спросите себя: в какой момент я мог бы попробовать этот выбор?';const p3=document.createElement('p');p3.textContent='С этим наблюдением можно прийти на тренинг и исследовать его в живой практике.';const b=document.createElement('button');b.className='btn small';b.textContent='Посмотреть программу →';b.onclick=()=>document.querySelector('#program').scrollIntoView({behavior:'smooth'});qr.append(p,p2,p3,b);qb.textContent='↺ Пройти ещё раз';return}qs.textContent='ВОПРОС '+(step+1)+' ИЗ 3';qt.textContent=questions[step].title;qo.replaceChildren();questions[step].options.forEach((text,i)=>{const b=document.createElement('button');b.type='button';b.className='quiz-option';b.textContent=text+' →';b.onclick=()=>{answers[step]=i;step++;renderQuiz();qt.tabIndex=-1;qt.focus({preventScroll:true})};qo.append(b)});qb.textContent='← Назад'}
 qb.onclick=()=>{step=step===3?0:Math.max(0,step-1);renderQuiz()};renderQuiz();
 
-const photoSlides=[
- {src:'ruslan-yoga.webp',alt:'Руслан Молодцов на практике',label:'Ведущий'},
- {src:'RV-21-05-112.webp',alt:'Групповая практика на предыдущем мероприятии',label:'Взаимодействие'},
- {src:'RV-YOGA-23-05-100.webp',alt:'Йогическая практика на открытой площадке',label:'Присутствие'}
-];
-let photoIndex=0,photoLoading=false;
-const photo=document.querySelector('#hero-photo'),photoStatus=document.querySelector('#gallery-status');
-const photoButtons=[document.querySelector('#gallery-prev'),document.querySelector('#gallery-next')];
-
-const reducedHeroMotion=matchMedia('(prefers-reduced-motion:reduce)');
-async function changePhoto(direction){
- if(photoLoading)return;
- const next=(photoIndex+direction+photoSlides.length)%photoSlides.length;
- const slide=photoSlides[next],preload=new Image();photoLoading=true;
- photoButtons.forEach(b=>b.disabled=true);
- const finish=()=>{photoLoading=false;photoButtons.forEach(b=>b.disabled=false)};
- preload.onerror=()=>{photoStatus.textContent='Фото временно недоступно. Попробуйте ещё раз.';finish()};
- preload.onload=async()=>{
- let outgoing;
- try{
- if(!reducedHeroMotion.matches&&photo.animate){
- outgoing=photo.cloneNode(false);outgoing.removeAttribute('id');outgoing.alt='';outgoing.setAttribute('aria-hidden','true');outgoing.className='photo-outgoing';photo.parentElement.append(outgoing);
- }
- photoIndex=next;photo.src=slide.src;photo.alt=slide.alt;
- photoStatus.textContent=String(next+1).padStart(2,'0')+' / 03 · '+slide.label;
- if(outgoing){
- const distance=innerWidth<761?40:75;
- await outgoing.animate([{transform:'translateX(0) rotate(0deg)',opacity:1},{transform:'translateX('+(-direction*distance)+'px) rotate('+(-direction*7)+'deg)',opacity:0}],{duration:380,easing:'cubic-bezier(.22,.75,.25,1)'}).finished;
- }
- }catch(error){/* Finish safely if animation is interrupted. */}
- finally{outgoing?.remove();finish()}
- };
- preload.src=slide.src;
-}
-photoButtons[0].addEventListener('click',()=>changePhoto(-1));
-photoButtons[1].addEventListener('click',()=>changePhoto(1));
-
 /* GalleryContainer / GalleryCol interaction adapted from Skillry Angled Gallery Hero. */
 const galleryEl=document.querySelector('.gallery');
 const motionAllowed=matchMedia('(min-width:761px) and (prefers-reduced-motion:no-preference)');
@@ -70,10 +33,3 @@ let pendingFrame=false;
 function updateGallery(){pendingFrame=false;if(!galleryEl)return;const r=galleryEl.getBoundingClientRect();const p=Math.max(0,Math.min(1,(innerHeight-r.top)/(innerHeight+r.height)));galleryEl.style.setProperty('--angle',motionAllowed.matches?Math.max(0,12*(1-p*2))+'deg':'0deg');galleryEl.style.setProperty('--shift',motionAllowed.matches?12*(1-p*2)+'px':'0px')}
 function requestGallery(){if(!pendingFrame){pendingFrame=true;requestAnimationFrame(updateGallery)}}
 addEventListener('scroll',requestGallery,{passive:true});addEventListener('resize',requestGallery);motionAllowed.addEventListener('change',requestGallery);updateGallery();
-
-let swipeStart;
-const heroFrame=document.querySelector('.gallery-frame');
-heroFrame.addEventListener('pointerdown',e=>{if(e.isPrimary&&e.pointerType!=='mouse')swipeStart={x:e.clientX,y:e.clientY}});
-heroFrame.addEventListener('pointerup',e=>{if(!swipeStart)return;const dx=e.clientX-swipeStart.x,dy=e.clientY-swipeStart.y;swipeStart=null;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.5)changePhoto(dx<0?1:-1)});
-heroFrame.addEventListener('pointercancel',()=>{swipeStart=null});
-reducedHeroMotion.addEventListener('change',()=>{if(reducedHeroMotion.matches)heroFrame.getAnimations({subtree:true}).forEach(a=>a.finish())});
