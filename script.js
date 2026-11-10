@@ -1,121 +1,27 @@
-const menuButton = document.querySelector(".menu-button");
-const nav = document.querySelector(".nav");
-
-menuButton?.addEventListener("click", () => {
-  const open = nav.classList.toggle("is-open");
-  menuButton.setAttribute("aria-expanded", String(open));
-});
-
-document.querySelectorAll(".nav a").forEach((link) => {
-  link.addEventListener("click", () => { nav.classList.remove("is-open"); menuButton?.setAttribute("aria-expanded", "false"); });
-});
-
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const revealSelectors = [
-  ".intro-grid > *",
-  ".section-heading > *",
-  ".pain-grid article",
-  ".freedom-content > *",
-  ".audience > h2",
-  ".audience-list article",
-  ".program-head > *",
-  ".program-path",
-  ".days details",
-  ".speaker-copy > *",
-  ".amenities > *",
-  ".amenity-grid p",
-  ".price-title > *",
-  ".price-card",
-  ".contact > *",
-  ".final > *",
-];
-
-const revealElements = document.querySelectorAll(revealSelectors.join(","));
-revealElements.forEach((element, index) => {
-  element.classList.add("reveal");
-  element.style.setProperty("--reveal-delay", `${(index % 4) * 85}ms`);
-});
-
-if (reduceMotion) {
-  revealElements.forEach((element) => element.classList.add("is-visible"));
-} else {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: "0px 0px -45px" },
-  );
-
-  revealElements.forEach((element) => observer.observe(element));
-
-  const movingImages = document.querySelectorAll(".hero-image, .place-image, .freedom-photo, .speaker-image");
-  const updateParallax = () => {
-    movingImages.forEach((image) => {
-      const rect = image.getBoundingClientRect();
-      const shift = Math.max(-14, Math.min(14, (window.innerHeight / 2 - (rect.top + rect.height / 2)) * 0.035));
-      image.style.setProperty("--image-shift", `${shift}px`);
-    });
-  };
-
-  updateParallax();
-  window.addEventListener("scroll", updateParallax, { passive: true });
+const dialog=document.querySelector('#contact-dialog');
+let previousFocus;
+function contact(title){
+ previousFocus=document.activeElement;
+ document.querySelector('#contact-title').textContent=title;
+ const box=document.querySelector('#contact-options');box.replaceChildren();
+ const c=window.EVENT_CONTACTS||{};
+ const links=[];
+ if(c.phone&&/^\+?\d[\d ()-]{6,}$/.test(c.phone))links.push(['Позвонить: +998 90 987 73 15','tel:'+c.phone.replace(/[^+\d]/g,'')]);
+ if(c.telegram&&/^[a-zA-Z0-9_]{5,}$/.test(c.telegram))links.push(['Написать в Telegram','https://t.me/'+c.telegram]);
+ if(c.whatsapp&&/^\d{7,15}$/.test(c.whatsapp))links.push(['Написать в WhatsApp','https://wa.me/'+c.whatsapp]);
+ if(c.paymentUrl&&/^https:\/\//.test(c.paymentUrl))links.push(['Перейти к оплате',c.paymentUrl]);
+ const p=document.createElement('p');
+ p.textContent=links.length?'Выберите удобный способ связи. Уточните стоимость, расписание и условия участия по телефону +998 90 987 73 15.':'Контакты организаторов скоро появятся. Сейчас можно познакомиться с программой и сохранить её, чтобы вернуться к решению об участии.';
+ if(!links.length)p.className='contact-note';box.append(p);
+ links.forEach(([label,url])=>{const a=document.createElement('a');a.className='contact-link';a.textContent=label+' →';a.href=url;if(url.startsWith('https:')){a.target='_blank';a.rel='noopener noreferrer'}box.append(a)});
+ const a=document.createElement('a');a.href='#program';a.className='text-link';a.textContent='Посмотреть программу ↓';a.addEventListener('click',()=>dialog.close());box.append(a);
+ dialog.showModal();
 }
-
-const photoStrip = document.querySelector(".photo-strip");
-if (photoStrip) {
-  if (reduceMotion) {
-    photoStrip.classList.remove("is-active");
-  } else {
-    const stripObserver = new IntersectionObserver(
-      ([entry]) => {
-        photoStrip.classList.toggle("is-active", entry.isIntersecting);
-      },
-      { threshold: 0.15 },
-    );
-    stripObserver.observe(photoStrip);
-  }
-}
-
-const bookModal = document.querySelector("#book-modal");
-let lastBookTrigger;
-const openBookModal = () => {
-  if (!bookModal) return;
-  lastBookTrigger = document.activeElement;
-  bookModal.hidden = false;
-  bookModal.querySelector("button, a")?.focus();
-  document.body.classList.add("modal-open");
-};
-
-const closeBookModal = () => {
-  if (!bookModal) return;
-  bookModal.hidden = true;
-  lastBookTrigger?.focus();
-  document.body.classList.remove("modal-open");
-};
-
-document.querySelectorAll(".js-book-open").forEach((button) => {
-  button.addEventListener("click", openBookModal);
-});
-
-document.querySelectorAll(".js-book-close").forEach((element) => {
-  element.addEventListener("click", closeBookModal);
-});
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && bookModal && !bookModal.hidden) {
-    closeBookModal();
-  }
-});
-
-bookModal?.addEventListener("keydown", (event) => {
- if(event.key!=="Tab") return;
- const nodes=[...bookModal.querySelectorAll('button,a[href]')];
- const first=nodes[0],last=nodes[nodes.length-1];
- if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}
- else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}
-});
+document.querySelectorAll('[data-contact]').forEach(b=>b.addEventListener('click',()=>contact(b.dataset.contact)));
+dialog.querySelector('.close').addEventListener('click',()=>dialog.close());
+dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});
+dialog.addEventListener('close',()=>previousFocus?.focus());
+const questions=[{title:'Где вы чаще замечаете знакомый сценарий?',options:['В близких отношениях','В работе и ответственности','В отношении к себе']},{title:'Что вы чаще делаете в такой ситуации?',options:['Соглашаюсь, хотя хочу отказать','Беру на себя больше, чем могу','Доказываю, что достоин большего','Откладываю важный разговор']},{title:'Какого нового опыта вам сейчас хочется?',options:['Говорить о своих желаниях прямо','Оставлять другим их ответственность','Действовать без бесконечного одобрения','Выбирать и делать конкретный шаг']}];
+let step=0;const answers=[];const qs=document.querySelector('#q-step'),qt=document.querySelector('#q-title'),qo=document.querySelector('#q-options'),qr=document.querySelector('#q-result'),qb=document.querySelector('#q-back');
+function renderQuiz(){qb.hidden=step===0;qr.hidden=true;qo.hidden=false;if(step===3){qs.textContent='ВАШ ПЕРВЫЙ ХОД';qt.textContent='Сценарий начинается с привычной реакции.';qo.hidden=true;qr.hidden=false;qr.replaceChildren();const p=document.createElement('p');p.textContent='Вы заметили знакомую историю '+['в близких отношениях','в работе и ответственности','в отношении к себе'][answers[0]]+'. Ваша привычная реакция: «'+questions[1].options[answers[1]]+'».';const p2=document.createElement('p');p2.textContent='Ваш желаемый шаг: «'+questions[2].options[answers[2]]+'». Вспомните один недавний эпизод и спросите себя: в какой момент я мог бы попробовать этот выбор?';const p3=document.createElement('p');p3.textContent='С этим наблюдением можно прийти на тренинг и исследовать его в живой практике.';const b=document.createElement('button');b.className='btn small';b.textContent='Посмотреть программу →';b.onclick=()=>document.querySelector('#program').scrollIntoView({behavior:'smooth'});qr.append(p,p2,p3,b);qb.textContent='↺ Пройти ещё раз';return}qs.textContent='ВОПРОС '+(step+1)+' ИЗ 3';qt.textContent=questions[step].title;qo.replaceChildren();questions[step].options.forEach((text,i)=>{const b=document.createElement('button');b.type='button';b.className='quiz-option';b.textContent=text+' →';b.onclick=()=>{answers[step]=i;step++;renderQuiz();qt.tabIndex=-1;qt.focus({preventScroll:true})};qo.append(b)});qb.textContent='← Назад'}
+qb.onclick=()=>{step=step===3?0:Math.max(0,step-1);renderQuiz()};renderQuiz();
