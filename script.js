@@ -50,3 +50,11 @@ function changePhoto(direction){
 }
 photoButtons[0].addEventListener('click',()=>changePhoto(-1));
 photoButtons[1].addEventListener('click',()=>changePhoto(1));
+
+/* GalleryContainer / GalleryCol interaction adapted from Skillry Angled Gallery Hero. */
+const galleryEl=document.querySelector('.gallery');
+const motionAllowed=matchMedia('(min-width:761px) and (prefers-reduced-motion:no-preference)');
+let pendingFrame=false;
+function updateGallery(){pendingFrame=false;if(!galleryEl)return;const r=galleryEl.getBoundingClientRect();const p=Math.max(0,Math.min(1,(innerHeight-r.top)/(innerHeight+r.height)));galleryEl.style.setProperty('--angle',motionAllowed.matches?Math.max(0,12*(1-p*2))+'deg':'0deg');galleryEl.style.setProperty('--shift',motionAllowed.matches?12*(1-p*2)+'px':'0px')}
+function requestGallery(){if(!pendingFrame){pendingFrame=true;requestAnimationFrame(updateGallery)}}
+addEventListener('scroll',requestGallery,{passive:true});addEventListener('resize',requestGallery);motionAllowed.addEventListener('change',requestGallery);updateGallery();
