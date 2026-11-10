@@ -190,3 +190,6 @@ INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
 DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
 OTHER DEALINGS IN THE FONT SOFTWARE.
+
+
+Moya Cobalt Display — modified display subset of Schibsted Grotesk under the same SIL OFL 1.1. Renamed family; static weight 800. Cyrillic М О Р А use corresponding original forms; Я И Г adapt mirrored R N L contours. This subset is for the МОЯ ИГРА hero only, not a full Cyrillic font.
