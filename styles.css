@@ -69,3 +69,31 @@ body,button,input,textarea,select,.stamp strong,.day-date,.day-date small,.day-q
 @media(prefers-reduced-motion:reduce){.photo-enter{animation:none}}
 
 .gallery{perspective:1000px;perspective-origin:center top}.gallery figure{transform:rotateX(var(--angle,0deg)) translateY(var(--shift,0px));transform-origin:center}.gallery figure:nth-child(2){transform:rotateX(var(--angle,0deg)) translateY(calc(var(--shift,0px) * -1))}@media(max-width:760px),(prefers-reduced-motion:reduce){.gallery figure{transform:none!important}}
+/* Your move: a single, brief entrance; never blocks reading or booking. */
+.hero{--move-ease:cubic-bezier(.22,.75,.25,1)}
+.move-title span,.move-title em{display:inline-block}
+.move-title span{animation:move-word 600ms var(--move-ease) both}
+.move-title em{animation:move-card 780ms 140ms var(--move-ease) both;transform-origin:15% 90%}
+.hero-steps{display:flex;flex-wrap:wrap;gap:10px 18px;list-style:none;padding:0;margin:-2px 0 26px;font-size:11px;line-height:1.55;color:var(--muted);counter-reset:hero-step}
+.hero-steps li{counter-increment:hero-step;animation:move-step 450ms var(--move-ease) both;animation-delay:450ms}
+.hero-steps li:before{content:"0" counter(hero-step);color:var(--orange);margin-right:7px;font-size:9px;font-variant-numeric:tabular-nums}
+.hero-steps li:nth-child(2){animation-delay:700ms}.hero-steps li:nth-child(3){animation-delay:950ms;color:var(--ink)}
+.gallery-stage{perspective:1000px}
+.gallery-frame{transform:rotate(0deg);animation:move-photo 950ms 160ms var(--move-ease) both;isolation:isolate;touch-action:pan-y}
+.gallery-stage:before{animation:move-outline 950ms 160ms var(--move-ease) both}
+.photo-stack-back{position:absolute;inset:19px 16px 82px;transform:rotate(-4deg);border-radius:16px;overflow:hidden;background:var(--gray);z-index:-1}
+.photo-stack-back img{width:100%;height:100%;object-fit:cover}
+.hero .btn span{display:inline-block;transition:transform 220ms var(--move-ease)}
+@media(hover:hover){.hero .btn:hover span{transform:translateX(5px)}}
+.hero .btn:active{transform:scale(.98)}
+.gallery-frame .photo-outgoing{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;z-index:2;transform-origin:50% 90%}
+@keyframes move-word{from{opacity:.45;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes move-card{from{opacity:.35;transform:translate(12px,20px) rotate(6deg)}to{opacity:1;transform:none}}
+@keyframes move-step{from{opacity:.3;transform:translateY(7px)}to{opacity:1;transform:none}}
+@keyframes move-photo{from{transform:translateY(14px) rotate(-5deg)}to{transform:translateY(0) rotate(0deg)}}
+@keyframes move-outline{from{opacity:.3;transform:rotate(0deg)}to{opacity:1;transform:rotate(5deg)}}
+@media(max-width:760px){.hero-steps{font-size:10px;gap:8px 12px;margin-bottom:22px}.photo-stack-back{inset:18px 14px 75px;transform:rotate(-3deg)}}
+@media(prefers-reduced-motion:reduce){
+.move-title span,.move-title em,.hero-steps li,.gallery-frame,.gallery-stage:before{animation:none!important}
+.gallery-frame{transform:none}.hero .btn:active,.hero .btn:hover span{transform:none}
+}
