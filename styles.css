@@ -67,3 +67,5 @@ body,button,input,textarea,select,.stamp strong,.day-date,.day-date small,.day-q
 .situations article{padding:22px 12px}
 }
 @media(prefers-reduced-motion:reduce){.photo-enter{animation:none}}
+
+.gallery{perspective:1000px;perspective-origin:center top}.gallery figure{transform:rotateX(var(--angle,0deg)) translateY(var(--shift,0px));transform-origin:center}.gallery figure:nth-child(2){transform:rotateX(var(--angle,0deg)) translateY(calc(var(--shift,0px) * -1))}@media(max-width:760px),(prefers-reduced-motion:reduce){.gallery figure{transform:none!important}}
