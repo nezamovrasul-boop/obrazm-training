@@ -47,23 +47,38 @@ h2 em { font-style:normal; font-weight:inherit; }
 .recognition .section-top .eyebrow { font-size:11px; }
 .recognition .section-top .muted { display:block; text-align:left; max-width:23ch; line-height:1.7; }
 .recognition h2 { grid-column:5/-1; margin:0; font-size:clamp(40px,4.3vw,62px); }
-.recognition-grid { grid-column:5/-1; display:block; }
-.recognition-grid .intro-copy { font-size:17px; max-width:50ch; margin-bottom:32px; }
-.situations article,.situations article:hover { border-radius:0; transform:none; background:none; padding:24px 0; }
-.situations article:first-child { border-top:1px solid var(--line); padding-top:24px; }
-.situations h3 { font-size:24px; font-weight:550; line-height:1.2; }
-.situations p { font-size:16px; max-width:53ch; }
+.recognition-grid { grid-column:1/-1; display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:40px 24px; }
+.recognition-grid > .intro-copy { grid-column:5/-1; font-size:17px; max-width:50ch; margin:0; }
+.recognition-grid > .situations { grid-column:1/-1; }
 .recognition .line-note { grid-column:1/-1; margin:8px 0 0; }
 .method { background:var(--paper); color:var(--ink); }
-.method-spread { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:24px; }
-.method-intro { grid-column:1/span 5; }
-.method h2 { font-size:clamp(36px,3.6vw,50px); margin-bottom:28px; }
-.method .intro-copy { font-size:17px; color:#62645f; }
-.method-spread .method-list { grid-column:7/-1; }
-.method-list article,.method-list article:first-child { padding:28px 0; border-top:1px solid var(--line); }
+.method-spread { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:40px 24px; }
+.method-intro { grid-column:1/-1; display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:28px 24px; align-items:start; }
+.method-intro > .section-label { grid-column:1/span 3; }
+.method h2 { grid-column:5/-1; font-size:clamp(36px,3.6vw,50px); margin:0; }
+.method .intro-copy { grid-column:5/-1; font-size:17px; max-width:50ch; margin:0; color:#62645f; }
+.method-spread .method-list { grid-column:1/-1; }
+.photo-plates { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; align-items:stretch; }
+.recognition .situations article,.recognition .situations article:hover,.recognition .situations article:first-child,
+.method .method-list article,.method .method-list article:first-child { display:flex; flex-direction:column; min-width:0; gap:0; padding:0; border:0; border-bottom:1px solid var(--line); border-radius:0; background:var(--paper); transform:none; transition:none; }
 .method-list article::before { display:none; }
-.method-list b { display:block; font-size:29px; line-height:1.2; letter-spacing:-.035em; font-weight:500; color:var(--ink); }
-.method-list p { font-size:17px; line-height:1.65; color:#62645f; margin-top:16px; }
+.photo-plate > img { display:block; width:100%; height:auto; aspect-ratio:3/2; object-fit:cover; border-radius:0; }
+.photo-plate-copy { flex:1; padding:24px 0 28px; min-width:0; }
+.photo-plate-copy .scenario-number { display:block; color:var(--orange); font-size:12px; line-height:1; font-weight:600; font-variant-numeric:tabular-nums; margin-bottom:16px; }
+.situations h3,.method-list h3 { margin:0 0 14px; font-size:clamp(22px,2.1vw,28px); line-height:1.2; font-weight:550; letter-spacing:-.025em; color:var(--ink); }
+.situations p,.method-list p { margin:0; font-size:16px; line-height:1.65; max-width:40ch; color:#62645f; }
+@media (min-width:621px) and (max-width:1100px) {
+ .photo-plates { grid-template-columns:minmax(0,1fr); gap:28px; }
+ .recognition .situations article,.recognition .situations article:hover,.recognition .situations article:first-child,
+ .method .method-list article,.method .method-list article:first-child { display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:28px; padding-bottom:28px; }
+ .photo-plate-copy { align-self:center; padding:8px 0; }
+ .situations h3,.method-list h3 { font-size:25px; }
+}
+@media (max-width:620px) {
+ .photo-plates { grid-template-columns:minmax(0,1fr); gap:36px; }
+ .photo-plate-copy { padding:20px 0 26px; }
+ .situations h3,.method-list h3 { font-size:24px; }
+}
 .practice { background:#efefeb; }
 .practice .split { align-items:center; }
 .practice .practice-photo { border-radius:2px; }
@@ -117,7 +132,7 @@ h2 em { font-style:normal; font-weight:inherit; }
  .poster-hero .poster-visual { height:420px; }
  .poster-hero .poster-title { font-size:clamp(88px,11.5vw,140px); }
  .recognition .section-top { grid-column:1/span 3; }
- .recognition h2,.recognition-grid { grid-column:5/-1; }
+ .recognition h2 { grid-column:5/-1; }
  .practice .practice-gallery figure:nth-child(1) { grid-column:1/span 3; }
  .practice .practice-gallery figure:nth-child(2) { grid-column:4/span 6; }
  .final h2 { grid-column:1/span 7; }
@@ -147,18 +162,14 @@ h2 em { font-style:normal; font-weight:inherit; }
  .poster-hero .poster-steps li::before { display:block; margin-bottom:8px; }
  .poster-hero .poster-steps a { font-size:13px; }
  .poster-steps a span { font-size:16px; }
- .recognition .wrap,.method-spread { display:block; }
+ .recognition .wrap,.recognition-grid,.method-spread,.method-intro { display:block; }
  .recognition .section-top { margin-bottom:24px; }
  .recognition .section-top .muted { max-width:none; }
  .recognition h2 { font-size:clamp(34px,6.3vw,48px); margin-bottom:28px; }
- .recognition-grid .intro-copy { font-size:16px; }
- .situations h3 { font-size:22px; }
- .situations p { font-size:15px; }
+ .recognition-grid .intro-copy { font-size:16px; margin-bottom:32px; }
  .recognition .line-note { margin-top:24px; }
  .method .intro-copy { margin-bottom:32px; }
- .method h2 { font-size:38px; }
- .method-list b { font-size:26px; }
- .method-list p { font-size:16px; }
+ .method h2 { font-size:38px; margin-bottom:28px; }
  .practice .practice-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px 20px; margin-top:40px; }
  .practice .practice-gallery figure:nth-child(n) { grid-column:auto; padding:0; }
  .practice .practice-gallery figure:nth-child(2) { grid-column:1/-1; grid-row:1; }
