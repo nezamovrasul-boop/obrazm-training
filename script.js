@@ -1,4 +1,4 @@
-window.EVENT_CONTACTS=Object.freeze({phone:"+998909877315"});
+window.EVENT_CONTACTS=Object.freeze({phone:"+998950290040"});
 const dialog=document.querySelector('#contact-dialog');
 let previousFocus;
 function contact(title){
@@ -7,12 +7,12 @@ function contact(title){
  const box=document.querySelector('#contact-options');box.replaceChildren();
  const c=window.EVENT_CONTACTS||{};
  const links=[];
- if(c.phone&&/^\+?\d[\d ()-]{6,}$/.test(c.phone))links.push(['Позвонить: +998 90 987 73 15','tel:'+c.phone.replace(/[^+\d]/g,'')]);
+ if(c.phone&&/^\+?\d[\d ()-]{6,}$/.test(c.phone))links.push(['Позвонить: +998 95 029 00 40','tel:'+c.phone.replace(/[^+\d]/g,'')]);
  if(c.telegram&&/^[a-zA-Z0-9_]{5,}$/.test(c.telegram))links.push(['Написать в Telegram','https://t.me/'+c.telegram]);
  if(c.whatsapp&&/^\d{7,15}$/.test(c.whatsapp))links.push(['Написать в WhatsApp','https://wa.me/'+c.whatsapp]);
  if(c.paymentUrl&&/^https:\/\//.test(c.paymentUrl))links.push(['Перейти к оплате',c.paymentUrl]);
  const p=document.createElement('p');
- p.textContent=links.length?'Выберите удобный способ связи. Уточните стоимость, расписание и условия участия по телефону +998 90 987 73 15.':'Контакты организаторов скоро появятся. Сейчас можно познакомиться с программой и сохранить её, чтобы вернуться к решению об участии.';
+ p.textContent=links.length?'Выберите удобный способ связи. Уточните стоимость, расписание и условия участия по телефону +998 95 029 00 40.':'Контакты организаторов скоро появятся. Сейчас можно познакомиться с программой и сохранить её, чтобы вернуться к решению об участии.';
  if(!links.length)p.className='contact-note';box.append(p);
  links.forEach(([label,url])=>{const a=document.createElement('a');a.className='btn contact-link';a.textContent=label;a.href=url;if(url.startsWith('https:')){a.target='_blank';a.rel='noopener noreferrer'}box.append(a)});
  const a=document.createElement('a');a.href='#program';a.className='text-link';a.textContent='Посмотреть программу';a.addEventListener('click',()=>dialog.close());box.append(a);
