@@ -22,7 +22,7 @@ if (galleries.length) {
     arrowPrevTitle: 'Предыдущая фотография',
     arrowNextTitle: 'Следующая фотография',
     errorMsg: 'Не удалось загрузить фотографию. Закройте просмотр и попробуйте ещё раз.',
-    indexIndicatorSep: ' / ',
+    indexIndicatorSep: ' из ',
     trapFocus: true,
     returnFocus: true,
     escKey: true,

@@ -50,7 +50,7 @@ async function changePhoto(direction){
  outgoing=photo.cloneNode(false);outgoing.removeAttribute('id');outgoing.alt='';outgoing.setAttribute('aria-hidden','true');outgoing.className='photo-outgoing';photo.parentElement.append(outgoing);
  }
  photoIndex=next;photo.src=slide.src;photo.alt=slide.alt;
- photoStatus.textContent=String(next+1).padStart(2,'0')+' / '+String(photoSlides.length).padStart(2,'0')+' · '+slide.label;
+ photoStatus.textContent='Фото '+(next+1)+' из '+photoSlides.length+' · '+slide.label;
  if(outgoing){
  const distance=innerWidth<761?40:75;
  await outgoing.animate([{transform:'translateX(0) rotate(0deg)',opacity:1},{transform:'translateX('+(-direction*distance)+'px) rotate('+(-direction*7)+'deg)',opacity:0}],{duration:380,easing:'cubic-bezier(.22,.75,.25,1)'}).finished;

@@ -1,3 +1,15 @@
+# Quiet section labels and background drawings — quiet-17
+
+11 November 2026. Replaces decorative chapter codes such as `01 / УЗНАТЬ СЕБЯ` with ten short sentence-case rubrics and a 24 px hairline. Method headings retain their verbs without the numeric slash prefix. Hero and PhotoSwipe counters now use the natural Russian “из” wording.
+
+Pinterest reference: [Beckley Retreats pin saved by BIOM Design Lab](https://www.pinterest.com/pin/314196511518354492/), opened and visually reviewed. The reference uses a plain small rubric above the heading; its restrained hierarchy informed this change. The short rule is our adaptation. No artwork, font or content was copied.
+
+Two original local SVGs add barely visible themed line drawings: lotus, a branching path, balanced stones and meditation. Stroke opacity is 0.035, width 1.5; variants use dark ink on paper and pale ink on graphite. The central area is mostly empty. CSS positions the edge motifs differently across sections and mobile views. The drawings are static decorative backgrounds, with no scripts, external references, requests or hit targets.
+
+Local verification: 320, 390, 768 and 1440 px have no horizontal overflow or clipped rubrics. Light desktop and dark mobile sections were visually reviewed. The two-image hero counter changes correctly, images load and console errors were absent. All existing CSP restrictions remain. Deployment and live checks are recorded in SITE-BACKLOG.md.
+
+---
+
 # Editorial redesign — editorial-16
 
 Prepared: 11 November 2026. Base: published `pinterest-15`, commit `cc16a2d35171cfb92f2dec87c66c8f8b4e3dce79`. Local implementation and browser checks are complete; publication and live verification are tracked in the project backlog. The pre-Cobalt paper/orange/graphite palette, Apple system font, real colour photographs, event dates, phone and DoYoga Studio map remain the project constraints.
