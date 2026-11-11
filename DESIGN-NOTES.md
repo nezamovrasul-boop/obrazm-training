@@ -1,12 +1,12 @@
-# Photo plates — photo-19
+# Linear photo plates — photo-20
 
-11 November 2026. The three recognition situations and the three method entries (Осмыслить / Прожить / Сделать иначе) are now six editorial photo plates. Original headings and descriptions remain live HTML. Three columns above 1100 px, horizontal photo-and-copy rows at 621–1100 px, and stacked photo/copy below 621 px. Warm paper surfaces, flat edges, restrained rules and the system font keep the plates aligned with the site.
+11 November 2026. The three recognition situations and the three method entries (Осмыслить / Прожить / Сделать иначе) are six editorial horizontal photo plates, stacked one per row at every viewport width. Original headings and descriptions remain live HTML. Photo on the left (up to 280 px on desktop, 80–110 px on mobile), heading and copy on the right. On mobile headings are 20 px and descriptions 15 px. The two lists have direct anchors recognition-scenarios and approach-steps. Warm paper surfaces, flat edges, restrained rules and the system font keep the plates aligned with the site.
 
 Six fictional illustrative photographs were generated using the built-in image_gen tool in a consistent warm linen / clay / graphite palette. They are stored locally as WebP, 1024 × 683, with explicit dimensions, lazy loading and async decoding; total weight 486850 bytes. See GENERATED-ASSETS.md for provenance. Existing real photographs elsewhere remain unchanged.
 
 The contact was updated across all visible text, telephone links and the registration dialog to +998 95 029 00 40 (tel:+998950290040), first published in contact-18.
 
-Local browser verification: 320 / 390 / 620 / 621 / 768 / 1100 / 1101 / 1440 px: no horizontal overflow or clipped card copy. Both sections visually reviewed on desktop and phone; all six photographs loaded. Registration dialog displays and links to the new phone. No console errors observed. Release and live verification recorded in SITE-BACKLOG.md.
+Local browser verification for the linear layout: 320 / 390 / 620 / 621 / 768 / 1100 / 1440 px: no horizontal overflow or clipped card copy. Both sections visually reviewed on desktop and phone; all six photographs loaded. Registration dialog displays and links to the new phone. No console errors observed. Release and live verification recorded in SITE-BACKLOG.md.
 
 ---
 
