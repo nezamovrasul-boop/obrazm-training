@@ -1,3 +1,47 @@
+# Editorial redesign — editorial-16
+
+Prepared: 11 November 2026. Base: published `pinterest-15`, commit `cc16a2d35171cfb92f2dec87c66c8f8b4e3dce79`. Local implementation and browser checks are complete; publication and live verification are tracked in the project backlog. The pre-Cobalt paper/orange/graphite palette, Apple system font, real colour photographs, event dates, phone and DoYoga Studio map remain the project constraints.
+
+## Visible design changes
+
+- **Poster-style first screen.** Replaced the left-copy/right-photo-stack layout with a large upright title, a separate orange date panel and one dominant landscape photograph. A compact side column holds the invitation and participation action. Two real photographs remain available through the manual slider. On mobile the photograph follows the title immediately, with the text and action below; at 390 px its top was measured at approximately 300 px of page height.
+- **An earlier, contrasting programme.** The programme is now the third section. Its top was measured at approximately 2121 px at a 1440 px viewport; the earlier 7065 px measurement belongs to refined-14. A graphite background, white text, orange dates and thin rules give it a distinct chapter. The three dates, native details, daily focus, all nine detailed programme points and hero-to-day links are preserved.
+- **Editorial content rhythm.** Recognition uses a narrow label rail beside the main content. The approach section separates the large introduction from three ruled method entries. Practice photographs form an asymmetric composition with different image sizes and purposeful captions instead of three identical cards; mobile reorders these into a readable photo sequence. Community copy now centres on real group experience rather than the unverified numerical claims previously shown.
+- **A portrait spread for the facilitator.** A large upright name, five-column photograph and six-column biography replace the previous conventional split block. The existing 27-year experience fact is treated typographically. The original biography, photograph and PhotoSwipe metadata are preserved, with stacked content on mobile.
+- **Results and final invitation.** Outcomes are three numbered horizontal rows with rules rather than equal cards. The final invitation is a graphite composition with a large heading, compact explanation and orange participation action. Site headings use upright system typography and stronger scale contrast; button corners are quieter and consistent with the editorial layout.
+
+The existing FAQ and venue card remain integrated with the new page rhythm. Body photographs are still grouped as eight images in four PhotoSwipe galleries; the two first-screen images are separate.
+
+## Design references and applied scope
+
+The following Pinterest references were opened and visually reviewed by the primary agent. Their composition informed the work; their images, copy, colours and fonts were not imported.
+
+- [Mezzanine](https://www.pinterest.com/pin/603693525089567946/): full-width masthead and photography at different scales, adapted to the poster hero.
+- [Threshold](https://www.pinterest.com/pin/931330397984309612/): strong upright typography, a dominant image and restrained orange section accents, adapted to hierarchy and pacing.
+- [Sommelith Event Studio](https://www.pinterest.com/pin/1041105638865870474/): asymmetric paired photographs and editorial spreads, adapted to practice, approach and facilitator sections.
+- [Design Conference / Danil Olenin](https://www.pinterest.com/pin/57491332734419815/): graphite conference programme, thin rules and clear hierarchy, adapted to the three-day section.
+
+Skillry patterns supplemented the Pinterest direction: [Split Frame Portfolio](https://skillry.dev/skills/bs-split-frame-portfolio) for the portrait/biography relationship, [Single Frame Hero](https://skillry.dev/skills/bs-hero-single-frame) for the dominant image, and [Editorial Studio SaaS](https://skillry.dev/skills/bs-editorial-studio-saas) for restrained entry motion and adaptive structure. Only relevant patterns were adapted; no complete template, new framework or template-specific font/palette was imported.
+
+Two easing values from [Open Props](https://github.com/argyleink/open-props/blob/f39ab7c377a0e047f930982e3611bbc95254a260/src/props.easing.css) are used locally in `editorial.css`: `--ease-out-3` and `--ease-3`. Its MIT notice is retained in `vendor/OPEN-PROPS-LICENSE.txt`. No Open Props runtime or full stylesheet is loaded. Existing reduced-motion handling is preserved; content remains available without animation.
+
+## Implementation and security
+
+`editorial.css` owns this release's new composition and responsive adjustments. New markup preserves section anchors, native controls and the existing gallery/contact/quiz behaviour. Contacts moved from inline JavaScript into the existing local `script.js` configuration. An early CSP meta element restricts scripts to the same origin, blocks inline scripts, and restricts frames, connections, objects and form submissions. A `strict-origin-when-cross-origin` referrer policy is declared. See the local project audit `SECURITY-NOTES.md` for the full policy, its scope and limitations; a meta policy is not a substitute for HTTP response headers.
+
+## Verification completed locally
+
+- Viewports 320, 390, 768, 820, 821, 1024, 1440 and 1920 px: no horizontal document overflow or clipped headings/copy in inspected states.
+- Visual review passed for desktop hero, programme, facilitator and practice sections, and mobile hero and programme. The first screen and programme position were measured on the rendered page, rather than inferred from source.
+- On the actual CSP-protected page: contact dialog resolves to `tel:+998909877315`; PhotoSwipe closes with Escape and restores focus; mobile menu closes with Escape; the three-question reflection flow completes; the day-two link opens its details and focuses its summary; the hero slider changes between both real images.
+- No console errors were reported during these local interaction checks. Existing phone, dates and map remain intact.
+
+`qa-preview.html` is an animation-disabled local test fixture and is excluded from publication. Live deployment status belongs in the project-root `SITE-BACKLOG.md`; it must not be inferred from the local checks above.
+
+---
+
+## Historical release: pinterest-15
+
 # Pinterest component refinement — pinterest-15
 
 Prepared: 11 November 2026. Base: published `refined-14`, commit `9778293d613fe2693011f5b79b322354ae92e956`. This release preserves the pre-Cobalt paper/orange/graphite palette, Apple system typography, real colour photographs, 27–29 November 2026 dates, +998 90 987 73 15 phone and DoYoga Studio map.

@@ -1,3 +1,4 @@
+window.EVENT_CONTACTS=Object.freeze({phone:"+998909877315"});
 const dialog=document.querySelector('#contact-dialog');
 let previousFocus;
 function contact(title){
@@ -27,9 +28,8 @@ function renderQuiz(){qb.hidden=step===0;qr.hidden=true;qo.hidden=false;if(step=
 qb.onclick=()=>{step=step===3?0:Math.max(0,step-1);renderQuiz()};renderQuiz();
 
 const photoSlides=[
- {src:'ruslan-yoga.webp',alt:'Руслан Молодцов на практике',label:'Ведущий'},
- {src:'RV-21-05-112.webp',alt:'Групповая практика на предыдущем мероприятии',label:'Взаимодействие'},
- {src:'RV-YOGA-23-05-100.webp',alt:'Йогическая практика на открытой площадке',label:'Присутствие'}
+ {src:'RV-YOGA-23-05-100.webp',alt:'Групповая практика с Русланом Молодцовым на открытой площадке',label:'Практика'},
+ {src:'RV-21-05-112.webp',alt:'Групповая практика йоги на предыдущем мероприятии',label:'Взаимодействие'}
 ];
 let photoIndex=0,photoLoading=false;
 const photo=document.querySelector('#hero-photo'),photoStatus=document.querySelector('#gallery-status');
@@ -50,7 +50,7 @@ async function changePhoto(direction){
  outgoing=photo.cloneNode(false);outgoing.removeAttribute('id');outgoing.alt='';outgoing.setAttribute('aria-hidden','true');outgoing.className='photo-outgoing';photo.parentElement.append(outgoing);
  }
  photoIndex=next;photo.src=slide.src;photo.alt=slide.alt;
- photoStatus.textContent=String(next+1).padStart(2,'0')+' / 03 · '+slide.label;
+ photoStatus.textContent=String(next+1).padStart(2,'0')+' / '+String(photoSlides.length).padStart(2,'0')+' · '+slide.label;
  if(outgoing){
  const distance=innerWidth<761?40:75;
  await outgoing.animate([{transform:'translateX(0) rotate(0deg)',opacity:1},{transform:'translateX('+(-direction*distance)+'px) rotate('+(-direction*7)+'deg)',opacity:0}],{duration:380,easing:'cubic-bezier(.22,.75,.25,1)'}).finished;
