@@ -13,8 +13,8 @@ function contact(title){
  const p=document.createElement('p');
  p.textContent=links.length?'Выберите удобный способ связи. Уточните стоимость, расписание и условия участия по телефону +998 90 987 73 15.':'Контакты организаторов скоро появятся. Сейчас можно познакомиться с программой и сохранить её, чтобы вернуться к решению об участии.';
  if(!links.length)p.className='contact-note';box.append(p);
- links.forEach(([label,url])=>{const a=document.createElement('a');a.className='contact-link';a.textContent=label;a.href=url;if(url.startsWith('https:')){a.target='_blank';a.rel='noopener noreferrer'}box.append(a)});
- const a=document.createElement('a');a.href='#program';a.className='text-link';a.textContent='Посмотреть программу ↓';a.addEventListener('click',()=>dialog.close());box.append(a);
+ links.forEach(([label,url])=>{const a=document.createElement('a');a.className='btn contact-link';a.textContent=label;a.href=url;if(url.startsWith('https:')){a.target='_blank';a.rel='noopener noreferrer'}box.append(a)});
+ const a=document.createElement('a');a.href='#program';a.className='text-link';a.textContent='Посмотреть программу';a.addEventListener('click',()=>dialog.close());box.append(a);
  dialog.showModal();
 }
 document.querySelectorAll('[data-contact]').forEach(b=>b.addEventListener('click',()=>contact(b.dataset.contact)));

@@ -1,3 +1,32 @@
+# Pinterest component refinement — pinterest-15
+
+Prepared: 11 November 2026. Base: published `refined-14`, commit `9778293d613fe2693011f5b79b322354ae92e956`. This release preserves the pre-Cobalt paper/orange/graphite palette, Apple system typography, real colour photographs, 27–29 November 2026 dates, +998 90 987 73 15 phone and DoYoga Studio map.
+
+## Changes
+
+- Added `components.css` as the single owner of the updated components. Removed obsolete component rules from the legacy stylesheets while preserving shared layout, hero motion and gallery/menu controls.
+- Unified buttons: orange primary, outline secondary and quieter text links; 52 px minimum primary height, 44 px compact controls, 12 px corners, visible keyboard focus, pointer-appropriate hover and reduced-motion support. Decorative CTA arrows are removed. The hero action says “Узнать об участии”.
+- Programme: three native details rows with date, activities and daily focus visible before expansion. The nine original detailed points remain available. Desktop columns become readable mobile rows. The redundant self-link inside the programme is removed; hero links still open and focus the correct day.
+- FAQ: thin separators, readable questions and answers, compact plus/minus indicators and spacious click targets. Removed the obsolete instruction about contacts being added later; the real phone now accompanies the participation information.
+- Practice photographs now have three distinct captions: “Живой диалог”, “Йога и движение”, “Дыхание и внимание”. Removed repeated photo blocks. PhotoSwipe opens eight photographs in four galleries; the hero deck remains separate and unchanged.
+- Venue: a practical DoYoga Studio card pairs the real Wind studio photograph with city, dates, format, map action and phone. The Earth studio photograph remains available below. Mobile places the image above the information. Opening hours, entrance instructions and an unconfirmed street address have not been invented.
+
+## References applied
+
+The selected Pinterest references informed composition and hierarchy only: button system 01, conference programme 02, Flow Yoga photo layout 04, Namaste venue card 05 and mobile FAQ 06. Agenda 03 remains an alternative, not a second programme. Full source links and visual rationale are saved in the project-root `PINTEREST-REFERENCES.md`. Existing photographs and system font are retained; no third-party template content or new JavaScript dependency was added.
+
+## Verification for this release
+
+Local rendered checks at widths 320, 390, 768, 820, 821, 1024, 1440 and 1920 px found no horizontal page overflow or clipped text in the inspected headings, copy, buttons, dates and venue information. Desktop/mobile screenshots were reviewed for the hero, programme, FAQ, practice photographs and venue card. A venue image sizing defect found during review was corrected.
+
+Functional checks passed: programme/FAQ expansion, hero-to-day navigation and focus, mobile menu Escape handling, PhotoSwipe opening/closing and focus return, and the contact dialog's `tel:+998909877315` destination. The local browser reported no console errors. Static checks passed for unique IDs, local assets, anchor targets and JavaScript syntax. These checks do not substitute for the pending physical-device and throttled-network tests in the backlog.
+
+`qa-preview.html` is a local fixture with animation disabled and must not be published. The actual page retains reduced-motion-aware animation. Release publication and live verification are tracked in `SITE-BACKLOG.md`.
+
+---
+
+## Historical release: refined-14
+
 # Refinement of the restored Your Move site
 
 Base: 59c8dca81c0ff1a24b7b74f5e9e493332a52558f (the full pre-Cobalt restoration).
